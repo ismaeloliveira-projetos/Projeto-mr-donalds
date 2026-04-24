@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { db } from "@/lib/prisma";
+import { isValidConsumptionMethod } from "@/lib/prisma-types";
 
 import RestaurantCategories from "./components/categories";
 import Footer from "./components/footer";
@@ -11,15 +12,11 @@ interface RestaurantMenuPageProps {
   searchParams: Promise<{ consumptionMethod?: string }>;
 }
 
-const isConsumptionMethodValid = (consumptionMethod: string) => {
-  return ["DINE_IN", "TAKEAWAY"].includes(consumptionMethod.toUpperCase());
-};
-
 const RestaurantMenuPage = async ({ params, searchParams }: RestaurantMenuPageProps) => {
   const { slug } = await params;
   const { consumptionMethod = "DINE_IN" } = await searchParams;
 
-  if (!isConsumptionMethodValid(consumptionMethod)) {
+  if (!isValidConsumptionMethod(consumptionMethod)) {
     return notFound();
   }
 

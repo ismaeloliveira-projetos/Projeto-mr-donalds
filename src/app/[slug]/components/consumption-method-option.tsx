@@ -1,9 +1,9 @@
-import { ConsumptionMethod } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import type { ConsumptionMethod } from "@/lib/prisma-types";
 
 interface ConsumptionMethodOptionProps {
   slug: string;
