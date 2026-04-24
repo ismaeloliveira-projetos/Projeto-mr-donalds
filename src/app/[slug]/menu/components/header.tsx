@@ -3,7 +3,7 @@
 import type { Restaurant } from "@prisma/client";
 import { ChevronLeftIcon, HomeIcon } from "lucide-react";
 import Image from "next/image";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 
@@ -12,7 +12,6 @@ interface RestaurantHeaderProps {
 }
 
 const RestaurantHeader = ({ restaurant }: RestaurantHeaderProps) => {
-  const { slug } = useParams<{ slug: string }>();
   const router = useRouter();
 
   return (

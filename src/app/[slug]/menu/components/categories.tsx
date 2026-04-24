@@ -1,12 +1,12 @@
 "use client";
 
+import type { MenuCategory, Product, Restaurant } from "@prisma/client";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, Minus, Plus, ShoppingCart, Trash2, X } from "lucide-react";
+import { Minus, Plus, ShoppingCart, Trash2, X } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 
 import { Button } from "@/components/ui/button";
-import type { MenuCategory, Product, Restaurant } from "@prisma/client";
 
 type RestaurantWithMenu = Restaurant & {
   menuCategories: (MenuCategory & { products: Product[] })[];
