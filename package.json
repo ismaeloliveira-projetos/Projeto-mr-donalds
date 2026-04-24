@@ -40,3 +40,8 @@
     "typescript": "^5"
   }
 }
+{
+  "scripts": {
+    "build": "prisma generate && next build"
+  }
+}
