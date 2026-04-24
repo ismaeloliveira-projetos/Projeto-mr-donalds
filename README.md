@@ -72,7 +72,7 @@ pnpm dev
 
 Acesse:
 
-http://localhost:3000
+http://localhost:3002
 🎯 Objetivo
 
 Este projeto foi desenvolvido com o objetivo de:
