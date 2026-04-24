@@ -7,23 +7,22 @@ import Footer from "./components/footer";
 import RestaurantHeader from "./components/header";
 
 interface RestaurantMenuPageProps {
-  params: Promise<{ slug: string }>;
-  searchParams: Promise<{ consumptionMethod: string }>;
+  params: { slug: string };
+  searchParams: { consumptionMethod?: string };
 }
 
 const isConsumptionMethodValid = (consumptionMethod: string) => {
   return ["DINE_IN", "TAKEAWAY"].includes(consumptionMethod.toUpperCase());
 };
 
-const RestaurantMenuPage = async ({
-  params,
-  searchParams,
-}: RestaurantMenuPageProps) => {
-  const { slug } = await params;
-  const { consumptionMethod } = await searchParams;
+const RestaurantMenuPage = async ({ params, searchParams }: RestaurantMenuPageProps) => {
+  const { slug } = params;
+  const consumptionMethod = searchParams.consumptionMethod ?? "DINE_IN";
+
   if (!isConsumptionMethodValid(consumptionMethod)) {
     return notFound();
   }
+
   const restaurant = await db.restaurant.findUnique({
     where: { slug },
     include: {
@@ -32,19 +31,18 @@ const RestaurantMenuPage = async ({
       },
     },
   });
+
   if (!restaurant) {
     return notFound();
   }
-  return (
-    <div>
-      <RestaurantHeader restaurant={restaurant} />
-      <RestaurantCategories restaurant={restaurant} />
 
+  return (
+    <div className="bg-slate-50">
+      <RestaurantHeader restaurant={restaurant} />
+      <RestaurantCategories restaurant={restaurant} consumptionMethod={consumptionMethod.toUpperCase()} />
       <Footer />
     </div>
   );
 };
 
 export default RestaurantMenuPage;
-
-// http://localhost:3000/fsw-donalds/menu?consumptionMethod=dine_in

@@ -1,101 +1,64 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
+
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-amber-950 text-white">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-96 bg-[radial-gradient(circle_at_top,_rgba(251,191,36,0.35),_transparent_45%)]" />
+      <div className="mx-auto flex min-h-screen max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
+        <motion.section
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center"
+        >
+          <div className="space-y-8 lg:max-w-xl">
+            <span className="inline-flex rounded-full bg-white/10 px-4 py-1 text-sm font-semibold uppercase tracking-[0.35em] text-amber-200 ring-1 ring-white/10">
+              Mr Donalds
+            </span>
+            <h1 className="text-5xl font-semibold tracking-tight text-white sm:text-6xl">
+              Fast food digital com carrinho inteligente e design moderno.
+            </h1>
+            <p className="max-w-2xl text-lg leading-8 text-slate-200">
+              Explore combos, hambúrgueres e bebidas com uma experiência fluida, carrinho persistente e navegação pensada para mobile e desktop.
+            </p>
+            <div className="flex flex-col gap-4 sm:flex-row">
+              <Button asChild size="lg">
+                <Link href="/fsw-donalds">Ver cardápio</Link>
+              </Button>
+              <Button asChild variant="secondary" size="lg">
+                <Link href="/products">Conhecer produtos</Link>
+              </Button>
+            </div>
+          </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          <div className="rounded-[2rem] border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/20 backdrop-blur-xl">
+            <div className="space-y-6">
+              <div className="rounded-3xl border border-white/10 bg-slate-950/80 p-6">
+                <p className="text-sm uppercase tracking-[0.25em] text-amber-300">Sinta o sabor</p>
+                <h2 className="mt-4 text-3xl font-semibold text-white">Cardápio completo em um clique</h2>
+                <p className="mt-3 text-slate-300">
+                  Navegação simples, produto rápido e carrinho que lembra seus itens enquanto você escolhe.
+                </p>
+              </div>
+              <div className="grid gap-4 text-slate-200 sm:grid-cols-2">
+                <div className="rounded-3xl border border-white/10 bg-slate-900/80 p-5">
+                  <p className="text-sm text-amber-300">Menu com categorias</p>
+                  <p className="mt-2 text-base text-slate-200">Combos, lanches, bebidas, fritas e sobremesas.</p>
+                </div>
+                <div className="rounded-3xl border border-white/10 bg-slate-900/80 p-5">
+                  <p className="text-sm text-amber-300">Carrinho persistente</p>
+                  <p className="mt-2 text-base text-slate-200">Seus itens ficam salvos no navegador até a próxima visita.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.section>
+      </div>
+    </main>
   );
 }
